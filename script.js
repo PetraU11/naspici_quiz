@@ -124,9 +124,10 @@ let quizDiv = document.querySelector("#section2")
 quizDiv.style.display = "none"
 let resultDiv = document.querySelector("#section3") 
 
-let min = 0
-let max = 13
-let index = Math.floor(Math.random()*(max - min + 1))+min
+min = 0
+max = 13
+let index = (Math.floor(Math.random()*(max-min + 1)) + min);
+console.log(index)
 let objekt = quizEntry[index]
 
 let otazka = objekt.question
@@ -145,6 +146,40 @@ let para4 = document.createElement("p")
 
 
 
+
+// VYGENERUJE 5 NAHODNYCH OBJEKTU 
+
+// Funkce pro náhodný výběr 5 položek z pole
+function getRandomItems(array, count) {
+    const shuffledArray = array.slice(); // Vytvoříme kopii pole, abychom nepoškodili původní pole
+    const result = [];
+    let remaining = shuffledArray.length;
+    
+    while (remaining > 0 && result.length < count) {
+      const randomIndex = Math.floor(Math.random() * remaining);
+      const item = shuffledArray.splice(randomIndex, 1)[0];
+      result.push(item);
+      remaining--;
+      console.log(result)
+    }
+    
+    return result;
+  }
+  
+  // Volání funkce pro náhodný výběr 5 položek
+  const randomItems = getRandomItems(quizEntry, 5);
+  objekt = randomItems
+  
+  // Výsledek (randomItems) bude obsahovat 5 náhodně vybraných položek z pole quizEntry
+  console.log(randomItems);
+  console.log(randomItems[0].question);
+  console.log(randomItems[0].answer1);
+  console.log(randomItems[0].answer2);
+  console.log(randomItems[0].answer3);
+  console.log(randomItems[0].answer4);
+
+  let num = [1 , 2, 3, 4, 5]
+    count = 0
 
 
 buttonStart = document.querySelector("#form")
@@ -157,39 +192,36 @@ buttonStart.addEventListener("submit", (e) => {
     buttonStart.style.display = "none"
     // ukládá hodnotu do pole
     participant.push = e.target.elements.alias.value  
+    console.log(participant)
     // zobrazí první otázku kvízu - random
-    let objekt = quizEntry[index]
+    let objekt = randomItems[0]
 
     header.innerHTML = objekt.question
     otazkaDiv.appendChild(header)
-
     para1.innerHTML = objekt.answer1
     odpovedDiv.appendChild(para1)
-
     para2.innerHTML = objekt.answer2
     odpovedDiv.appendChild(para2)
-
     para3.innerHTML = objekt.answer3
     odpovedDiv.appendChild(para3)
-
     para4.innerHTML = objekt.answer4
     odpovedDiv.appendChild(para4)
+
+   
+    countPara = document.createElement("p")
+    countPara.innerHTML = `${num[count]} / 5`
+    quizDiv.appendChild(countPara)
+
 })
 
 
 
-// VYPISOVANÍ OBJEKTU DO STRANKY 
-
+let currentQuestionIndex = 0;
 confirmationBtn = document.querySelector("#btn")
 confirmationBtn.addEventListener("click", () => {
-    
-    let min = 0
-    let max = 13
-    let index = Math.floor(Math.random()*(max - min + 1))+min
-
-    let objekt = quizEntry[index]
-    console.log(objekt)
-
+    currentQuestionIndex++
+    objekt = randomItems[currentQuestionIndex]
+    if(currentQuestionIndex < 5){
     header.innerHTML = objekt.question
     otazkaDiv.appendChild(header)
     para1.innerHTML = objekt.answer1
@@ -200,70 +232,32 @@ confirmationBtn.addEventListener("click", () => {
     otazkaDiv.appendChild(para3)
     para4.innerHTML = objekt.answer4
     otazkaDiv.appendChild(para4)
-
-})
-
-
-
-/* 
-
-let index = 0
-let objekt = quizEntry[index]
-
-let otazka = objekt.question
-let odpoved1 = objekt.answer1;
-let odpoved2 = objekt.answer2;
-let odpoved3 = objekt.answer3;
-let odpoved4 = objekt.answer4;
-
-let otazkaDiv = document.querySelector("#question")
-let header = document.createElement("h2")
-header.innerHTML = objekt.question
-otazkaDiv.appendChild(header)
-
-let odpovedDiv = document.querySelector("#answer")
-let para1 = document.createElement("p")
-para1.innerHTML = objekt.answer1
-otazkaDiv.appendChild(para1)
-
-let para2 = document.createElement("p")
-para2.innerHTML = objekt.answer2
-otazkaDiv.appendChild(para2)
-
-let para3 = document.createElement("p")
-para3.innerHTML = objekt.answer3
-otazkaDiv.appendChild(para3)
-
-let para4 = document.createElement("p")
-para4.innerHTML = objekt.answer4
-otazkaDiv.appendChild(para4)
-
-// PO STISKNUTÍ TLAČÍTKA SE ZMĚNÍ ZOBRAZENÉ POLE OBJEKTŮ
-
-let btn = document.querySelector("#btn")
-btn.addEventListener("click", (e) => {
-    if(index <= quizEntry.length - 2){
-    newIndex = index + 1
-    objekt = quizEntry[newIndex]
-    console.log(index++)
-    
-    header.innerHTML = objekt.question
-    otazkaDiv.appendChild(header)
-    para1.innerHTML = objekt.answer1
-    otazkaDiv.appendChild(para1)
-    para2.innerHTML = objekt.answer2
-    otazkaDiv.appendChild(para2) 
-    para3.innerHTML = objekt.answer3
-    otazkaDiv.appendChild(para3)
-    para4.innerHTML = objekt.answer4
-    otazkaDiv.appendChild(para4) }
-    else{
-        resultDiv.innerHTML = "A máš hotovo!"
+} else {
+    resultDiv.innerHTML = "A máš hotovo!"
         quizDiv.style.display = "none"
-    
-        
+}
 
-    }
+
+
+count += 1
+countPara = document.createElement("p")
+countPara.innerHTML = `${num[count]} / 5`
+quizDiv.appendChild(countPara)
+ 
+
 })
 
-*/ 
+// začne počítat 1 až 5 
+
+
+
+
+
+
+
+
+
+
+  
+
+
