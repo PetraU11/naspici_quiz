@@ -145,6 +145,9 @@ let para3 = document.createElement("p")
 let para4 = document.createElement("p")
 
 
+let count = 0
+countPara = document.createElement("p")
+quizDiv.appendChild(countPara)
 
 
 // VYGENERUJE 5 NAHODNYCH OBJEKTU 
@@ -178,14 +181,17 @@ function getRandomItems(array, count) {
   console.log(randomItems[0].answer3);
   console.log(randomItems[0].answer4);
 
-  let num = [1 , 2, 3, 4, 5]
-    count = 0
+
+
 
 
 buttonStart = document.querySelector("#form")
 buttonStart.addEventListener("submit", (e) => {
     // zabranuje defaultnímu chování
     e.preventDefault()
+    //odpočítavá otázky
+    count += 1
+    countPara.innerHTML = `${count} / 5`
     //zobrazí kvíz, skryje btn z homeDivu
     homeDiv.style.display = "none"
     quizDiv.style.display = "block"
@@ -207,11 +213,6 @@ buttonStart.addEventListener("submit", (e) => {
     para4.innerHTML = objekt.answer4
     odpovedDiv.appendChild(para4)
 
-   
-    countPara = document.createElement("p")
-    countPara.innerHTML = `${num[count]} / 5`
-    quizDiv.appendChild(countPara)
-
 })
 
 
@@ -219,6 +220,10 @@ buttonStart.addEventListener("submit", (e) => {
 let currentQuestionIndex = 0;
 confirmationBtn = document.querySelector("#btn")
 confirmationBtn.addEventListener("click", () => {
+    //odpočítává 1 k 5
+    count += 1
+    countPara.innerHTML = `${count} / 5`
+    //zvyšuje index a generuje otázky
     currentQuestionIndex++
     objekt = randomItems[currentQuestionIndex]
     if(currentQuestionIndex < 5){
@@ -237,17 +242,11 @@ confirmationBtn.addEventListener("click", () => {
         quizDiv.style.display = "none"
 }
 
-
-
-count += 1
-countPara = document.createElement("p")
-countPara.innerHTML = `${num[count]} / 5`
-quizDiv.appendChild(countPara)
- 
-
 })
 
-// začne počítat 1 až 5 
+
+
+
 
 
 
