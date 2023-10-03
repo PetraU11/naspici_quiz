@@ -112,6 +112,16 @@ let quizEntry = [
     correct: "Himaláje",
   },
 ]
+
+let textArray = [{
+text1: "text1",
+text2: "text2",
+text3: "text3",
+text4: "text4",
+}]
+
+
+
 //LANDING PAGE
 
 
@@ -135,6 +145,7 @@ let odpoved1 = objekt.answer1;
 let odpoved2 = objekt.answer2;
 let odpoved3 = objekt.answer3;
 let odpoved4 = objekt.answer4;
+let spravnaOdpoved = objekt.correct
 
 let otazkaDiv = document.querySelector("#question")
 let header = document.createElement("h2")
@@ -148,6 +159,7 @@ let para4 = document.createElement("p")
 let count = 0
 countPara = document.createElement("p")
 quizDiv.appendChild(countPara)
+
 
 
 // VYGENERUJE 5 NAHODNYCH OBJEKTU 
@@ -172,14 +184,63 @@ function getRandomItems(array, count) {
   // Volání funkce pro náhodný výběr 5 položek
   const randomItems = getRandomItems(quizEntry, 5);
   objekt = randomItems
+
   
-  // Výsledek (randomItems) bude obsahovat 5 náhodně vybraných položek z pole quizEntry
-  console.log(randomItems);
-  console.log(randomItems[0].question);
-  console.log(randomItems[0].answer1);
-  console.log(randomItems[0].answer2);
-  console.log(randomItems[0].answer3);
-  console.log(randomItems[0].answer4);
+
+  // Vypsání otázek do html
+
+
+  let questionShown = () => {
+    let currentQuestionIndex = 0;
+    let objekt = randomItems[currentQuestionIndex]
+    header.innerHTML = objekt.question
+    otazkaDiv.appendChild(header)
+    para1.innerHTML = objekt.answer1
+    odpovedDiv.appendChild(para1)
+    para2.innerHTML = objekt.answer2
+    odpovedDiv.appendChild(para2)
+    para3.innerHTML = objekt.answer3
+    odpovedDiv.appendChild(para3)
+    para4.innerHTML = objekt.answer4
+    odpovedDiv.appendChild(para4)
+    console.log(`Správná odpověď: ${objekt.correct}`)
+
+        para1.addEventListener("click", (e) => {
+            if(e.target.innerHTML === objekt.correct){
+                console.log("spravně")
+            }else {
+                console.log("špatně")
+            }
+        })
+    }
+
+    
+let currentQuestionIndex = 0
+let showNext = () => {
+    currentQuestionIndex++
+    let objekt = randomItems[currentQuestionIndex]
+    if(currentQuestionIndex <=  4 ){
+    header.innerHTML = objekt.question
+    otazkaDiv.appendChild(header)
+    para1.innerHTML = objekt.answer1
+    odpovedDiv.appendChild(para1)
+    para2.innerHTML = objekt.answer2
+    odpovedDiv.appendChild(para2) 
+    para3.innerHTML = objekt.answer3
+    odpovedDiv.appendChild(para3)
+    para4.innerHTML = objekt.answer4
+    odpovedDiv.appendChild(para4)
+    console.log(`Správná odpověď: ${objekt.correct}`)
+
+} else {
+    resultDiv.innerHTML = "A máš hotovo!"
+        quizDiv.style.display = "none"
+}
+
+}
+
+
+   
 
 
 
@@ -199,55 +260,69 @@ buttonStart.addEventListener("submit", (e) => {
     // ukládá hodnotu do pole
     participant.push = e.target.elements.alias.value  
     console.log(participant)
-    // zobrazí první otázku kvízu - random
-    let objekt = randomItems[0]
-
-    header.innerHTML = objekt.question
-    otazkaDiv.appendChild(header)
-    para1.innerHTML = objekt.answer1
-    odpovedDiv.appendChild(para1)
-    para2.innerHTML = objekt.answer2
-    odpovedDiv.appendChild(para2)
-    para3.innerHTML = objekt.answer3
-    odpovedDiv.appendChild(para3)
-    para4.innerHTML = objekt.answer4
-    odpovedDiv.appendChild(para4)
+    // Zobrazí první otázku kvízu
+    questionShown()
 
 })
 
 
 
-let currentQuestionIndex = 0;
 confirmationBtn = document.querySelector("#btn")
 confirmationBtn.addEventListener("click", () => {
     //odpočítává 1 k 5
     count += 1
     countPara.innerHTML = `${count} / 5`
     //zvyšuje index a generuje otázky
-    currentQuestionIndex++
-    objekt = randomItems[currentQuestionIndex]
-    if(currentQuestionIndex < 5){
-    header.innerHTML = objekt.question
-    otazkaDiv.appendChild(header)
-    para1.innerHTML = objekt.answer1
-    otazkaDiv.appendChild(para1)
-    para2.innerHTML = objekt.answer2
-    otazkaDiv.appendChild(para2) 
-    para3.innerHTML = objekt.answer3
-    otazkaDiv.appendChild(para3)
-    para4.innerHTML = objekt.answer4
-    otazkaDiv.appendChild(para4)
-} else {
-    resultDiv.innerHTML = "A máš hotovo!"
-        quizDiv.style.display = "none"
-}
+    showNext()
+     
+   })
+   
+   
 
-})
+  
 
+/*
 
+let answerFc = () => {
+   
+    para1.addEventListener("click", (e) => {
+        if (e.target.innerHTML === objekt.correct){
+            console.log("Správně") 
+           
+        } else {
+            console.log("Špatně")
+    
+            }
+        })
+       
+       para2.addEventListener("click", (e) => {
+        if (e.target.innerHTML === objekt.correct){
+            console.log("Správně")
+        }else {
+            console.log("Špatně")
+           }
+       })
+       
+       para3.addEventListener("click", (e) => {
+        if (e.target.innerHTML === objekt.correct){
+            console.log("Správně")
+            }else {
+            console.log("Špatně")
+            }
+       })
+       
+       para4.addEventListener("click", (e) => {
+        if (e.target.innerHTML === objekt.correct){
+            console.log("Správně")
+        }else {
+            console.log("Špatně")
+        }
+       })
+     
 
+  }
 
-
+  */
 
 
 
