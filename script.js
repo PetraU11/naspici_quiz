@@ -303,7 +303,9 @@ confirmationBtn = document.querySelector("#btn")
 confirmationBtn.addEventListener("click", () => {
     //odpočítává 1 k 5
     count += 1
+    countPara.classList.add = "section3__counting"
     countPara.innerHTML = `${count} / 5`
+
     //zvyšuje index a generuje otázky
     showNext()
      

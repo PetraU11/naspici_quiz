@@ -3,6 +3,7 @@
 
 body{
     color:  aliceblue;
+    width:100%;
 }
 
 .section1,
@@ -16,20 +17,20 @@ body{
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 
 .section1__wrapper, 
 .section2__wrapper,
 .section3__wrapper {
-    
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     text-align:center;
     background-color: rgb(141, 83, 45);
     border-radius: 10px;
-    padding-top:60px;
-
+    padding: 20px;
+  
 }
 
 
@@ -44,6 +45,7 @@ body{
     margin-bottom: 25px;
     width: 70%;
     height: 40px;
+    border-radius: 10px;
 }
 
 ::placeholder {
@@ -53,13 +55,17 @@ body{
 .section1__button{
     width: 50%;
     height: 40px;
-    
+    background-color:aliceblue;
+    border-radius: 10px;   
 }
 
+.section1__button:hover {
+    background-color: rgb(214, 134, 88);
+}
 
 @media only screen and (min-width: 1000px) {
     .section1{
-        grid-template-columns: 30% 1fr 30%;
+    grid-template-columns: 30% 1fr 30%;
     grid-template-rows: 30% 1fr 30%;
     
     }
@@ -69,7 +75,13 @@ body{
 
 /* SECTION TWO - Quiz */
 
-
+.button {
+    width: 50%;
+    height: 40px;
+    background-color:aliceblue;
+    border-radius: 10px;   
+    
+}
 
 
 
