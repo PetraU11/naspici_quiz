@@ -113,14 +113,6 @@ let quizEntry = [
   },
 ]
 
-let textArray = [{
-text1: "text1",
-text2: "text2",
-text3: "text3",
-text4: "text4",
-}]
-
-
 
 //LANDING PAGE
 
@@ -132,7 +124,7 @@ let participant = [""]
 let homeDiv = document.querySelector("#section1") 
 let quizDiv = document.querySelector("#section2") 
 quizDiv.style.display = "none"
-let resultDiv = document.querySelector("#section3") 
+let resultDiv = document.querySelector("#section3__wrapper") 
 
 min = 0
 max = 13
@@ -184,6 +176,7 @@ function getRandomItems(array, count) {
   // Volání funkce pro náhodný výběr 5 položek
   const randomItems = getRandomItems(quizEntry, 5);
   objekt = randomItems
+  console.log(randomItems[0].correct)
 
   
 
@@ -205,13 +198,6 @@ function getRandomItems(array, count) {
     odpovedDiv.appendChild(para4)
     console.log(`Správná odpověď: ${objekt.correct}`)
 
-        para1.addEventListener("click", (e) => {
-            if(e.target.innerHTML === objekt.correct){
-                console.log("spravně")
-            }else {
-                console.log("špatně")
-            }
-        })
     }
 
     
@@ -233,7 +219,7 @@ let showNext = () => {
     console.log(`Správná odpověď: ${objekt.correct}`)
 
 } else {
-    resultDiv.innerHTML = "A máš hotovo!"
+    resultDiv.innerHTML = "<h2>A máš hotovo!</h2> "
         quizDiv.style.display = "none"
 }
 
@@ -241,6 +227,47 @@ let showNext = () => {
 
 
    
+// FCE VYBRANI SPRAVNE ODPOVĚDI 
+
+
+let answerFc = () => {
+
+    para1.addEventListener("click", (e) => {
+        if (e.target.innerHTML === randomItems[0].correct){
+            console.log("Správně") 
+           
+        } else {
+            console.log("Špatně")
+    
+            }
+        })
+       
+       para2.addEventListener("click", (e) => {
+        if (e.target.innerHTML === randomItems[0].correct){
+            console.log("Správně")
+        }else {
+            console.log("Špatně")
+           }
+       })
+       
+       para3.addEventListener("click", (e) => {
+        if (e.target.innerHTML === randomItems[0].correct){
+            console.log("Správně")
+            }else {
+            console.log("Špatně")
+            }
+       })
+       
+       para4.addEventListener("click", (e) => {
+        if (e.target.innerHTML === randomItems[0].correct){
+            console.log("Správně")
+        }else {
+            console.log("Špatně")
+        }
+       })
+     
+
+  }
 
 
 
@@ -255,13 +282,14 @@ buttonStart.addEventListener("submit", (e) => {
     countPara.innerHTML = `${count} / 5`
     //zobrazí kvíz, skryje btn z homeDivu
     homeDiv.style.display = "none"
-    quizDiv.style.display = "block"
+    quizDiv.style.display = "grid"
     buttonStart.style.display = "none"
     // ukládá hodnotu do pole
     participant.push = e.target.elements.alias.value  
     console.log(participant)
     // Zobrazí první otázku kvízu
     questionShown()
+    answerFc()
 
 })
 
@@ -280,49 +308,7 @@ confirmationBtn.addEventListener("click", () => {
    
 
   
-
-/*
-
-let answerFc = () => {
-   
-    para1.addEventListener("click", (e) => {
-        if (e.target.innerHTML === objekt.correct){
-            console.log("Správně") 
-           
-        } else {
-            console.log("Špatně")
-    
-            }
-        })
-       
-       para2.addEventListener("click", (e) => {
-        if (e.target.innerHTML === objekt.correct){
-            console.log("Správně")
-        }else {
-            console.log("Špatně")
-           }
-       })
-       
-       para3.addEventListener("click", (e) => {
-        if (e.target.innerHTML === objekt.correct){
-            console.log("Správně")
-            }else {
-            console.log("Špatně")
-            }
-       })
-       
-       para4.addEventListener("click", (e) => {
-        if (e.target.innerHTML === objekt.correct){
-            console.log("Správně")
-        }else {
-            console.log("Špatně")
-        }
-       })
-     
-
-  }
-
-  */
+  
 
 
 

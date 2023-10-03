@@ -1,0 +1,83 @@
+*, :after, :before { box-sizing: border-box;}
+
+
+body{
+    color:  aliceblue;
+}
+
+.section1,
+.section2,
+.section3 {
+    display:grid;
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: 30% 1fr 30%;
+    background-image: url(images/IMG_0430up_small.png);
+    height: 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.section1__wrapper, 
+.section2__wrapper,
+.section3__wrapper {
+    
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    text-align:center;
+    background-color: rgb(141, 83, 45);
+    border-radius: 10px;
+    padding-top:60px;
+
+}
+
+
+/* SECTION ONE - Landing page */
+
+.section1__header {
+    color:aliceblue;
+}
+
+.section1__input{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 70%;
+    height: 40px;
+}
+
+::placeholder {
+    text-align:center;
+}
+
+.section1__button{
+    width: 50%;
+    height: 40px;
+    
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .section1{
+        grid-template-columns: 30% 1fr 30%;
+    grid-template-rows: 30% 1fr 30%;
+    
+    }
+
+}
+
+
+/* SECTION TWO - Quiz */
+
+
+
+
+
+
+
+/* SECTION THREE - Result */
+
+
+
+
+
