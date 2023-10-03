@@ -124,7 +124,9 @@ let participant = [""]
 let homeDiv = document.querySelector("#section1") 
 let quizDiv = document.querySelector("#section2") 
 quizDiv.style.display = "none"
-let resultDiv = document.querySelector("#section3__wrapper") 
+let resultDiv = document.querySelector("#section3")
+resultDiv.style.display = "none"
+let resultWrapper = document.querySelector("#section3__wrapper") 
 
 min = 0
 max = 13
@@ -146,6 +148,7 @@ let para1 = document.createElement("p")
 let para2 = document.createElement("p")
 let para3 = document.createElement("p")
 let para4 = document.createElement("p")
+
 
 
 let count = 0
@@ -219,7 +222,8 @@ let showNext = () => {
     console.log(`Správná odpověď: ${objekt.correct}`)
 
 } else {
-    resultDiv.innerHTML = "<h2>A máš hotovo!</h2> "
+    resultWrapper.innerHTML = "<h2>A máš hotovo!</h2> "
+        resultDiv.style.display = "grid"
         quizDiv.style.display = "none"
 }
 
