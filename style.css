@@ -43,7 +43,7 @@ body{
 .section1__input{
     margin-top: 25px;
     margin-bottom: 25px;
-    width: 70%;
+    min-width: 200px;
     height: 40px;
     border-radius: 10px;
 }
@@ -53,7 +53,7 @@ body{
 }
 
 .section1__button{
-    width: 50%;
+    min-width: 180px;
     height: 40px;
     background-color:aliceblue;
     border-radius: 10px;   
@@ -81,6 +81,12 @@ body{
     background-color:aliceblue;
     border-radius: 10px;   
     
+}
+
+.section2__countdown {
+    grid-column: 2 / 3;
+    justify-self: center;
+    align-self: end ;
 }
 
 

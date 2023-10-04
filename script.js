@@ -284,6 +284,8 @@ buttonStart.addEventListener("submit", (e) => {
     //odpočítavá otázky
     count += 1
     countPara.innerHTML = `${count} / 5`
+    quizDiv.appendChild(countPara)
+    countPara.classList.add("section2__countdown")
     //zobrazí kvíz, skryje btn z homeDivu
     homeDiv.style.display = "none"
     quizDiv.style.display = "grid"
