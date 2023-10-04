@@ -89,8 +89,13 @@ body{
     align-self: end ;
 }
 
+.question >  h2 {
+    margin-bottom: 30px;
 
-
+}
+.answer > p {
+    margin-bottom: 30px;
+}
 
 
 /* SECTION THREE - Result */
