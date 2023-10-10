@@ -119,7 +119,7 @@ let quizEntry = [
 
 // Definice promměných
 
-let participant = [""]
+let participant = []
 
 let homeDiv = document.querySelector("#section1") 
 let quizDiv = document.querySelector("#section2") 
@@ -207,37 +207,33 @@ let showNext = () => {
 }}
 
    
-// FCE VYBRANI SPRAVNE ODPOVĚDI 
+// FCE VYBRANI SPRAVNE ODPOVĚDI, OZNAČENÍ ODPOVĚDI A POSLANÍ ODPOVĚDI DO POLE
 
-
-
+let score = []
 let paraPole = [para1, para2, para3, para4]
 let answerFc = () => {
-  
-  
   paraPole.forEach((para) => {
     para.addEventListener("click", (e) => {
-    
         paraPole.forEach((para) => {
         para.style.backgroundColor = ""
         })
-        
         e.target.style.backgroundColor = "#e25435"
-
 
         if (e.target.innerHTML === randomItems[currentQuestionIndex].correct){
             console.log("Správně")
-            
+            score.push(1) 
         } else {
             console.log("Špatně")
-            
+            score.push(0) 
             }
         })})
       
     
       }
        
-    
+console.log(score)
+
+
 buttonStart = document.querySelector("#form")
 buttonStart.addEventListener("submit", (e) => {
     // zabranuje defaultnímu chování
@@ -256,6 +252,7 @@ buttonStart.addEventListener("submit", (e) => {
     console.log(participant)
     // Zobrazí první otázku kvízu
     questionShown()
+    // Spustí funkci k vybrání správné odpovědi
     answerFc()
 
 })
@@ -277,14 +274,14 @@ confirmationBtn.addEventListener("click", () => {
       para.style.backgroundColor = ""
       })
      
-    // pošle hodnotu do pole score
+  
     
    })
    
-   
 
-  
-  
+
+   
+ 
 
 /*
        para2.addEventListener("click", (e) => {
