@@ -128,19 +128,6 @@ let resultDiv = document.querySelector("#section3")
 resultDiv.style.display = "none"
 let resultWrapper = document.querySelector("#section3__wrapper") 
 
-min = 0
-max = 13
-let index = (Math.floor(Math.random()*(max-min + 1)) + min);
-console.log(index)
-let objekt = quizEntry[index]
-
-let otazka = objekt.question
-let odpoved1 = objekt.answer1;
-let odpoved2 = objekt.answer2;
-let odpoved3 = objekt.answer3;
-let odpoved4 = objekt.answer4;
-let spravnaOdpoved = objekt.correct
-
 let otazkaDiv = document.querySelector("#question")
 let header = document.createElement("h2")
 let odpovedDiv = document.querySelector("#answer")
@@ -150,16 +137,13 @@ let para3 = document.createElement("p")
 let para4 = document.createElement("p")
 
 
-
 let count = 0
 countPara = document.createElement("p")
 quizDiv.appendChild(countPara)
 
-
-
 // VYGENERUJE 5 NAHODNYCH OBJEKTU 
 
-// Funkce pro náhodný výběr 5 položek z pole
+// Funkce pro náhodný výběr 5 položek z pole - ChatGPT
 function getRandomItems(array, count) {
     const shuffledArray = array.slice(); // Vytvoříme kopii pole, abychom nepoškodili původní pole
     const result = [];
@@ -172,22 +156,19 @@ function getRandomItems(array, count) {
       remaining--;
       console.log(result)
     }
-    
     return result;
   }
   
+
   // Volání funkce pro náhodný výběr 5 položek
   const randomItems = getRandomItems(quizEntry, 5);
-  objekt = randomItems
+  let objekt = randomItems 
   console.log(randomItems[0].correct)
-
-  
+  let currentQuestionIndex = 0;
 
   // Vypsání otázek do html
 
-
   let questionShown = () => {
-    let currentQuestionIndex = 0;
     let objekt = randomItems[currentQuestionIndex]
     header.innerHTML = objekt.question
     otazkaDiv.appendChild(header)
@@ -200,11 +181,9 @@ function getRandomItems(array, count) {
     para4.innerHTML = objekt.answer4
     odpovedDiv.appendChild(para4)
     console.log(`Správná odpověď: ${objekt.correct}`)
-
     }
 
-    
-let currentQuestionIndex = 0
+
 let showNext = () => {
     currentQuestionIndex++
     let objekt = randomItems[currentQuestionIndex]
@@ -225,58 +204,34 @@ let showNext = () => {
     resultWrapper.innerHTML = "<h2>A máš hotovo!</h2> "
         resultDiv.style.display = "grid"
         quizDiv.style.display = "none"
-}
-
-}
-
+}}
 
    
 // FCE VYBRANI SPRAVNE ODPOVĚDI 
 
-
 let answerFc = () => {
+  let paraPole = [para1, para2, para3, para4]
+  
+  paraPole.forEach((para) => {
+    para.addEventListener("click", (e) => {
+     
+        paraPole.forEach((para) => {
+        para.style.backgroundColor = ""
+        })
+        e.target.style.backgroundColor = "#e25435"
 
-    para1.addEventListener("click", (e) => {
-        if (e.target.innerHTML === randomItems[0].correct){
-            console.log("Správně") 
-           
+
+        if (e.target.innerHTML === randomItems[currentQuestionIndex].correct){
+            console.log("Správně")
         } else {
             console.log("Špatně")
+            }
+        })})
+      
     
-            }
-        })
+      }
        
-       para2.addEventListener("click", (e) => {
-        if (e.target.innerHTML === randomItems[0].correct){
-            console.log("Správně")
-        }else {
-            console.log("Špatně")
-           }
-       })
-       
-       para3.addEventListener("click", (e) => {
-        if (e.target.innerHTML === randomItems[0].correct){
-            console.log("Správně")
-            }else {
-            console.log("Špatně")
-            }
-       })
-       
-       para4.addEventListener("click", (e) => {
-        if (e.target.innerHTML === randomItems[0].correct){
-            console.log("Správně")
-        }else {
-            console.log("Špatně")
-        }
-       })
-     
-
-  }
-
-
-
-
-
+      
 buttonStart = document.querySelector("#form")
 buttonStart.addEventListener("submit", (e) => {
     // zabranuje defaultnímu chování
@@ -318,14 +273,56 @@ confirmationBtn.addEventListener("click", () => {
   
   
 
+/*
+       para2.addEventListener("click", (e) => {
+        if (e.target.innerHTML === randomItems[currentQuestionIndex].correct){
+            console.log("Správně")
+        }else {
+            console.log("Špatně")
+           }
+       })
+       
+       para3.addEventListener("click", (e) => {
+        if (e.target.innerHTML === randomItems[currentQuestionIndex].correct){
+            console.log("Správně")
+            }else {
+            console.log("Špatně")
+            }
+       })
+       
+       para4.addEventListener("click", (e) => {
+        if (e.target.innerHTML === randomItems[currentQuestionIndex].correct){
+            console.log("Správně")
+        }else {
+            console.log("Špatně")
+        }
+       })
+     */
 
 
 
+/*
+  para1.style.backgroundColor = "pink"
+      para2.style.backgroundColor = "transparent"
+      para3.style.backgroundColor = "transparent"
+      para4.style.backgroundColor = "transparent"
+*/
 
 
 
+/*
+min = 0
+max = 13
+let index = (Math.floor(Math.random()*(max-min + 1)) + min);
+console.log(index)
+let objekt = quizEntry[index]
 
-
-  
+let otazka = objekt.question
+let odpoved1 = objekt.answer1;
+let odpoved2 = objekt.answer2;
+let odpoved3 = objekt.answer3;
+let odpoved4 = objekt.answer4;
+let spravnaOdpoved = objekt.correct
+*/
 
 

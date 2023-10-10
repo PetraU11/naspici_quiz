@@ -11,7 +11,7 @@ body{
 .section3 {
     display:grid;
     grid-template-columns: 10% 1fr 10%;
-    grid-template-rows: 30% 1fr 30%;
+    grid-template-rows: 20% 1fr 40%;
     background-image: url(images/IMG_0430up_small.png);
     height: 100vh;
     background-position: center center;
@@ -90,11 +90,15 @@ body{
 }
 
 .question >  h2 {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
 }
 .answer > p {
-    margin-bottom: 30px;
+    padding: 15px;
+}
+
+.answer.choosen {
+    background-color: pink;
 }
 
 
