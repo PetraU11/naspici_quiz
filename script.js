@@ -209,29 +209,35 @@ let showNext = () => {
    
 // FCE VYBRANI SPRAVNE ODPOVĚDI 
 
+
+
+let paraPole = [para1, para2, para3, para4]
 let answerFc = () => {
-  let paraPole = [para1, para2, para3, para4]
+  
   
   paraPole.forEach((para) => {
     para.addEventListener("click", (e) => {
-     
+    
         paraPole.forEach((para) => {
         para.style.backgroundColor = ""
         })
+        
         e.target.style.backgroundColor = "#e25435"
 
 
         if (e.target.innerHTML === randomItems[currentQuestionIndex].correct){
             console.log("Správně")
+            
         } else {
             console.log("Špatně")
+            
             }
         })})
       
     
       }
        
-      
+    
 buttonStart = document.querySelector("#form")
 buttonStart.addEventListener("submit", (e) => {
     // zabranuje defaultnímu chování
@@ -265,7 +271,14 @@ confirmationBtn.addEventListener("click", () => {
 
     //zvyšuje index a generuje otázky
     showNext()
+
+    //odbarví vybranou otázku ještě z předchozího výběru
+    paraPole.forEach((para) => {
+      para.style.backgroundColor = ""
+      })
      
+    // pošle hodnotu do pole score
+    
    })
    
    
